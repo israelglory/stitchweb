@@ -1,0 +1,47 @@
+---
+interface Props {
+  href?: string;
+  class?: string;
+}
+
+const { href = '[APP STORE URL]', class: className = '' } = Astro.props;
+---
+
+<a 
+  href={href} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  class={`app-store-badge ${className}`}
+  aria-label="Download Stitch on the App Store"
+>
+  <svg 
+    width="156" 
+    height="48" 
+    viewBox="0 0 156 48" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <rect width="156" height="48" rx="8" fill="#151517" stroke="#2A2A2E" stroke-width="1"/>
+    <!-- Apple Logo -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M30.741 21.002c-.033-2.613 2.128-3.87 2.226-3.931-1.214-1.776-3.109-2.02-3.784-2.049-1.612-.164-3.149.95-3.966.95-.817 0-2.083-.926-3.428-.901-1.767.025-3.398 1.026-4.308 2.607-1.838 3.187-.47 7.893 1.319 10.478.874 1.264 1.916 2.684 3.284 2.634 1.317-.052 1.815-.851 3.407-.851 1.59 0 2.039.851 3.418.825 1.404-.025 2.294-1.288 3.155-2.551 1.002-1.464 1.413-2.88 1.436-2.955-.032-.014-2.727-1.047-2.759-4.256zM27.533 13.565c.725-.878 1.213-2.1 1.079-3.318-1.043.042-2.308.694-3.055 1.57-.668.777-1.254 2.024-1.096 3.218 1.165.09 2.347-.591 3.072-1.47z" fill="#F2F2F3"/>
+    <!-- Text: Download on the -->
+    <text x="44" y="19" font-family="Inter, -apple-system, sans-serif" font-size="9" font-weight="400" fill="#A1A1A8" letter-spacing="0.2">Download on the</text>
+    <!-- Text: App Store -->
+    <text x="44" y="32" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#F2F2F3" letter-spacing="-0.3">App Store</text>
+  </svg>
+</a>
+
+<style>
+  .app-store-badge {
+    display: inline-block;
+    border-radius: 8px;
+    transition: border-color 150ms ease, opacity 150ms ease;
+  }
+  .app-store-badge:hover {
+    opacity: 0.9;
+  }
+  .app-store-badge:hover rect {
+    stroke: #3A3A40;
+  }
+</style>

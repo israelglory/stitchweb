@@ -1,0 +1,195 @@
+/* Self-hosted Inter font faces */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+/* Design Tokens */
+:root {
+  --background: #0B0B0C;
+  --surface: #151517;
+  --surface-raised: #1E1E21;
+  --border: #2A2A2E;
+  --text-primary: #F2F2F3;
+  --text-secondary: #A1A1A8;
+  --text-tertiary: #6B6B73;
+  --accent: #4C8DFF;
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-24: 24px;
+  --font-size-40: 40px;
+  --font-size-56: 56px;
+
+  --line-height-body: 1.5;
+  --line-height-heading: 1.1;
+
+  --max-content-width: 1080px;
+  --max-text-width: 640px;
+
+  --radius-button: 8px;
+  --radius-frame: 12px;
+
+  --section-padding-desktop: 96px;
+  --section-padding-mobile: 64px;
+  --transition-speed: 150ms;
+}
+
+/* CSS Reset & Baseline */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-family);
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* Focus outline for accessibility without custom glow */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Text limits & Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: var(--line-height-heading);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--font-size-56);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+}
+
+h2 {
+  font-size: var(--font-size-40);
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 28px;
+  }
+}
+
+h3 {
+  font-size: var(--font-size-24);
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-body);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity var(--transition-speed) ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+/* Content Container */
+.container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+  color: #FFFFFF;
+  font-size: var(--font-size-14);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.btn-primary:hover {
+  background-color: #3B7BEB;
+  border-color: #3B7BEB;
+  opacity: 1;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  font-size: var(--font-size-14);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface-raised);
+  border-color: #3A3A40;
+  opacity: 1;
+}
+
+/* Prefers Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
