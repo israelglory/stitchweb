@@ -4,8 +4,9 @@ import { siteConfig } from '../data/site';
 
 <header class="header">
   <div class="container header-inner">
-    <a href="/" class="wordmark" aria-label="Stitch Home">
-      {siteConfig.name}
+    <a href="/" class="brand-link" aria-label="Stitch Home">
+      <img src="/favicon-32x32.png" alt="Stitch App Icon" class="brand-logo" width="28" height="28" />
+      <span class="wordmark">{siteConfig.name}</span>
     </a>
     
     <nav class="nav" aria-label="Main navigation">
@@ -36,16 +37,27 @@ import { siteConfig } from '../data/site';
     justify-content: space-between;
   }
 
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .brand-logo {
+    border-radius: 6px;
+    display: block;
+  }
+
   .wordmark {
     font-size: var(--font-size-18);
     font-weight: 600;
     color: var(--text-primary);
-    text-decoration: none;
     letter-spacing: -0.02em;
   }
 
-  .wordmark:hover {
-    opacity: 1;
+  .brand-link:hover .wordmark {
+    opacity: 0.9;
   }
 
   .nav {

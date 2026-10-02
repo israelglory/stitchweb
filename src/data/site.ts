@@ -24,11 +24,11 @@ export interface SupportTopic {
 
 export const siteConfig = {
   name: 'Stitch',
-  fullName: 'Stitch: Private Video Editor',
+  fullName: 'Stitch: Free Video Editor',
   tagline: 'Edit your videos. Keep them yours.',
   url: 'https://stitch.gloryolaifa.xyz',
-  appStoreUrl: '[APP STORE URL]',
-  googlePlayUrl: '[GOOGLE PLAY URL]',
+  appStoreUrl: '/',
+  googlePlayUrl: '/',
   appId: '[APP ID]',
   pricingLine: 'Free on iOS & Android',
   supportEmail: 'gloryolaifa@gmail.com',
