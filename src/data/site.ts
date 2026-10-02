@@ -4,6 +4,7 @@ export interface FeatureItem {
   description: string;
   screenshotDimensions: string;
   screenshotLabel: string;
+  screenshotSrc?: string;
 }
 
 export interface PrivacyPoint {
@@ -27,21 +28,23 @@ export const siteConfig = {
   tagline: 'Edit your videos. Keep them yours.',
   url: 'https://stitch.gloryolaifa.xyz',
   appStoreUrl: '[APP STORE URL]',
+  googlePlayUrl: '[GOOGLE PLAY URL]',
   appId: '[APP ID]',
-  pricingLine: 'Free on iPhone',
+  pricingLine: 'Free on iOS & Android',
   supportEmail: 'gloryolaifa@gmail.com',
   developerName: 'Glory Olaifa',
   developerLocation: 'Nigeria',
   copyrightYear: '2025',
-  minIosVersion: 'iOS 16.0',
+  minIosVersion: 'iOS 16.0 / Android 10',
   captionsModelHost: 'huggingface.co',
 
   hero: {
     headline: 'Edit your videos. Keep them yours.',
-    subhead: 'Stitch is a video editor that runs entirely on your iPhone. No account, no uploads, no tracking.',
-    pricing: 'Free on iPhone',
-    screenshotDimensions: '1200 × 800 px',
-    screenshotLabel: 'Stitch Editor Main Canvas & Timeline'
+    subhead: 'Stitch is a video editor that runs entirely on your device. No account, no uploads, no tracking.',
+    pricing: 'Free on iOS & Android',
+    screenshotDimensions: '1170 × 2532 px',
+    screenshotLabel: 'Stitch Multi-Track Timeline & Editor Canvas',
+    screenshotSrc: '/screenshots/hero-editor.png'
   },
 
   features: [
@@ -50,35 +53,40 @@ export const siteConfig = {
       title: 'Cut, trim, and arrange.',
       description: 'Split, trim, merge, reorder, and change speed on a clean timeline. Formats for every platform: 9:16, 16:9, 1:1, 4:5.',
       screenshotDimensions: '1170 × 2532 px',
-      screenshotLabel: 'Multi-Track Timeline & Formatting Tools'
+      screenshotLabel: 'Timeline & Speed Editing Tools',
+      screenshotSrc: '/screenshots/hero-editor.png'
     },
     {
-      id: 'transitions',
-      title: 'Transitions that just work.',
-      description: 'Crossfade, fade to black, slide, wipe, and zoom. Set the duration or apply one to every cut.',
+      id: 'projects',
+      title: 'Organize your projects cleanly.',
+      description: 'Create, manage, and edit multiple video projects stored privately on your device. Instant access without cloud sync delays.',
       screenshotDimensions: '1170 × 2532 px',
-      screenshotLabel: 'Transition Selector & Timing Controls'
+      screenshotLabel: 'Private Local Projects Dashboard',
+      screenshotSrc: '/screenshots/projects-dashboard.png'
     },
     {
       id: 'captions',
       title: 'Captions, without the internet.',
       description: 'Auto captions generated on your phone. Edit the words and timing, then pick a clean style.',
       screenshotDimensions: '1170 × 2532 px',
-      screenshotLabel: 'On-Device Speech Recognition & Subtitle Styling'
+      screenshotLabel: 'On-Device Speech Model & Caption Generator',
+      screenshotSrc: '/screenshots/captions.png'
     },
     {
-      id: 'audio',
-      title: 'Music and voiceover.',
-      description: 'Add music from your files or the built-in library, record voiceovers on the timeline, and balance them against the original sound.',
+      id: 'media',
+      title: 'Music, voiceover, and media.',
+      description: 'Add music from your files, select clips seamlessly from your photo library, and balance voiceovers against the original audio.',
       screenshotDimensions: '1170 × 2532 px',
-      screenshotLabel: 'Audio Track Mixer & Voiceover Recorder'
+      screenshotLabel: 'On-Device Photo & Video Picker',
+      screenshotSrc: '/screenshots/media-picker.png'
     },
     {
       id: 'export',
       title: 'Export up to 4K.',
       description: 'Save to Photos or share anywhere, at 24, 30, or 60 fps.',
       screenshotDimensions: '1170 × 2532 px',
-      screenshotLabel: 'High-Resolution 4K Export Settings'
+      screenshotLabel: 'Custom Resolution & Frame-Rate Export Settings',
+      screenshotSrc: '/screenshots/export.png'
     }
   ] as FeatureItem[],
 
@@ -112,23 +120,23 @@ export const siteConfig = {
     },
     {
       question: 'Where are my projects stored?',
-      answer: 'On your iPhone, inside the app. Deleting the app deletes them.'
+      answer: 'On your phone, inside the app. Deleting the app deletes them.'
     },
     {
       question: 'Do you see my videos?',
       answer: 'No. They never leave your device, so there is nothing for us to see.'
     },
     {
-      question: 'Which iPhones are supported?',
-      answer: 'iPhone running iOS 16.0 or later. 4K export depends on your device.'
+      question: 'Which devices are supported?',
+      answer: 'iPhones running iOS 16.0 or later, and Android phones running Android 10 or later. 4K export depends on your device.'
     },
     {
       question: 'Is it free?',
-      answer: 'Stitch is free on iPhone.'
+      answer: 'Stitch is free on both iOS and Android.'
     },
     {
       question: 'Is there an Android version?',
-      answer: 'An Android version is currently in development.'
+      answer: 'Yes! Stitch is available for both iOS and Android. Everything runs 100% locally on your phone regardless of platform.'
     }
   ] as FaqItem[],
 
@@ -147,11 +155,11 @@ export const siteConfig = {
     },
     {
       title: 'App cannot see my videos',
-      solution: 'Open iOS Settings > Privacy & Security > Photos > Stitch, and ensure access is set to Full Access or Selected Photos.'
+      solution: 'Open device Settings > Privacy & Security > Photos / Media > Stitch, and ensure full media access permission is granted.'
     },
     {
       title: 'Project displays missing media',
-      solution: 'If original video clips were deleted from your iPhone Photos library or iCloud sync, Stitch cannot access them. Restore the clips to your library.'
+      solution: 'If original video clips were deleted from your device media library, Stitch cannot access them. Restore the clips to your library.'
     },
     {
       title: 'How to delete all app data',

@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<Layout
+  title={`Privacy Policy - ${siteConfig.name}`}
+  description="Privacy Policy for Stitch: Private Video Editor. Complete transparency on zero data collection, on-device processing, and permissions."
+  canonicalPath="/privacy-policy"
+>
+  <article class="privacy-page">
+    <div class="container page-container">
+      <header class="page-header">
+        <p class="last-updated">Last updated: October 3, 2025</p>
+        <h1 class="page-title">Privacy Policy</h1>
+      </header>
+
+      {/* High-visibility Summary Box */}
+      <div class="summary-box">
+        <p class="summary-text">
+          <strong>Summary:</strong> Stitch does not collect, store, or share your personal data. Your videos, audio, and edits stay entirely on your device.
+        </p>
+      </div>
+
+      <div class="prose">
+        <section class="policy-section">
+          <h2>1. Who We Are</h2>
+          <p>
+            Stitch ("the App") is developed by {siteConfig.developerName}, based in {siteConfig.developerLocation}. For any questions regarding privacy or data handling, you can contact us directly at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>2. Data We Collect</h2>
+          <p>
+            We collect <strong>zero personal data</strong>. There are no user accounts, no registration forms, no analytics trackers, no advertising identifiers, and no crash reporting software development kits (SDKs) embedded in the App.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>3. How the App Works</h2>
+          <p>
+            Stitch is designed from the ground up for full on-device processing:
+          </p>
+          <ul>
+            <li><strong>Video Editing:</strong> All trimming, splitting, speed adjustments, and rendering happen locally using your iPhone's hardware.</li>
+            <li><strong>Speech Recognition & Captions:</strong> Subtitles are generated locally using on-device machine learning models.</li>
+            <li><strong>Storage:</strong> Draft projects, edit history, and imported assets are saved strictly within the App's private local container.</li>
+          </ul>
+        </section>
+
+        <section class="policy-section">
+          <h2>4. Permissions and Why They Are Needed</h2>
+          <p>
+            Stitch requests access to specific iOS capabilities only to perform actions you initiate:
+          </p>
+          <ul>
+            <li><strong>Photo Library (Read):</strong> Allows you to select videos and photos to edit in your projects.</li>
+            <li><strong>Add to Photos (Write):</strong> Allows Stitch to save your rendered 4K or 1080p videos back to your Photos library.</li>
+            <li><strong>Microphone:</strong> Allows you to record voiceovers onto your timeline, activated only when you press record.</li>
+          </ul>
+          <p>
+            You can modify or revoke these permissions at any time in your iPhone <strong>Settings &gt; Privacy &amp; Security</strong>.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>5. Network Use</h2>
+          <p>
+            Stitch functions completely offline. The only network request the App may perform is an optional, user-initiated download of the on-device speech recognition model (hosted on open infrastructure such as {siteConfig.captionsModelHost}). Once downloaded, speech recognition runs 100% offline.
+          </p>
+          <p>
+            Like any standard HTTPS web request, the hosting service may record technical connection metrics (such as IP address); we do not receive, store, or use server logs to identify you.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>6. In-App Purchases</h2>
+          <p>
+            If applicable, payment processing for purchases is handled entirely by Apple via the App Store. We do not receive or store your payment details, billing address, or credit card numbers.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>7. Children's Privacy</h2>
+          <p>
+            Because Stitch does not collect personal data from any user, it does not collect information from children. It is safe for users of all ages.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>8. Your Rights</h2>
+          <p>
+            Under privacy regulations such as the General Data Protection Regulation (GDPR) and the Nigeria Data Protection Act 2023 (NDPA), users have rights regarding personal data access, deletion, and portability.
+          </p>
+          <p>
+            Because Stitch holds zero personal data on any server, there is no remote data to access, export, or delete. Deleting the App from your device permanently removes all local projects, cached models, and stored settings.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>9. Website Privacy</h2>
+          <p>
+            This marketing website (<a href={siteConfig.url}>{siteConfig.url}</a>) uses no cookies, no analytics tools, no advertising scripts, and no third-party embeds. The web hosting provider may log standard web server access requests as required for operation and security.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>10. Changes to This Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date at the top.
+          </p>
+        </section>
+
+        <section class="policy-section">
+          <h2>11. Contact Us</h2>
+          <p>
+            If you have questions or feedback about this Privacy Policy, please email us at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
+          </p>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .privacy-page {
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+  }
+
+  .page-container {
+    max-width: var(--max-text-width);
+  }
+
+  .page-header {
+    margin-bottom: 32px;
+  }
+
+  .last-updated {
+    font-size: var(--font-size-14);
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+
+  .page-title {
+    font-size: var(--font-size-40);
+  }
+
+  .summary-box {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-button);
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  .summary-text {
+    font-size: var(--font-size-16);
+    color: var(--text-primary);
+    line-height: var(--line-height-body);
+  }
+
+  .prose {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .policy-section h2 {
+    font-size: var(--font-size-24);
+    margin-bottom: 12px;
+  }
+
+  .policy-section p {
+    font-size: var(--font-size-16);
+    color: var(--text-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: 12px;
+  }
+
+  .policy-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .policy-section ul {
+    list-style-type: disc;
+    padding-left: 24px;
+    margin-bottom: 12px;
+  }
+
+  .policy-section li {
+    font-size: var(--font-size-16);
+    color: var(--text-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .privacy-page {
+      padding-top: var(--section-padding-mobile);
+      padding-bottom: var(--section-padding-mobile);
+    }
+  }
+</style>

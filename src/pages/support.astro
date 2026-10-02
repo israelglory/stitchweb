@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FaqItem from '../components/FaqItem.astro';
+import { siteConfig } from '../data/site';
+---
+
+<Layout
+  title={`Support & Troubleshooting - ${siteConfig.name}`}
+  description="Get help with Stitch: Private Video Editor. Contact developer support and find solutions to common questions and troubleshooting topics."
+  canonicalPath="/support"
+>
+  <article class="support-page">
+    <div class="container page-container">
+      <header class="page-header">
+        <h1 class="page-title">Support &amp; Troubleshooting</h1>
+        <p class="page-intro">
+          Need help or have questions about Stitch? We are committed to providing direct support.
+        </p>
+      </header>
+
+      {/* Direct Contact Card */}
+      <div class="contact-card">
+        <div class="contact-info">
+          <h2 class="contact-title">Contact Support</h2>
+          <p class="contact-desc">
+            Send an email to <a href={`mailto:${siteConfig.supportEmail}`} class="email-link">{siteConfig.supportEmail}</a> for assistance with technical issues or feedback.
+          </p>
+          <p class="response-time">
+            Expected response time: within 24 hours.
+          </p>
+        </div>
+      </div>
+
+      {/* Troubleshooting Section */}
+      <section class="troubleshooting-section">
+        <h2 class="section-title">Common Solutions</h2>
+        
+        <div class="troubleshooting-list">
+          {siteConfig.supportTopics.map((topic) => (
+            <FaqItem
+              question={topic.title}
+              answer={topic.solution}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* App Store Link Box */}
+      <div class="app-store-box">
+        <p class="box-text">
+          Looking to redownload Stitch or check for updates?
+        </p>
+        <a 
+          href={siteConfig.appStoreUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-secondary"
+        >
+          View on the App Store &rarr;
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .support-page {
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+  }
+
+  .page-container {
+    max-width: var(--max-text-width);
+  }
+
+  .page-header {
+    margin-bottom: 40px;
+  }
+
+  .page-title {
+    font-size: var(--font-size-40);
+    margin-bottom: 12px;
+  }
+
+  .page-intro {
+    font-size: var(--font-size-18);
+    color: var(--text-secondary);
+  }
+
+  /* Contact Card */
+  .contact-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-button);
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+
+  .contact-title {
+    font-size: var(--font-size-24);
+    margin-bottom: 12px;
+  }
+
+  .contact-desc {
+    font-size: var(--font-size-16);
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+
+  .email-link {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .response-time {
+    font-size: var(--font-size-14);
+    color: var(--text-tertiary);
+  }
+
+  /* Troubleshooting Section */
+  .troubleshooting-section {
+    margin-bottom: 48px;
+  }
+
+  .section-title {
+    font-size: var(--font-size-24);
+    margin-bottom: 24px;
+  }
+
+  .troubleshooting-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* App Store Box */
+  .app-store-box {
+    background-color: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-button);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .box-text {
+    font-size: var(--font-size-16);
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .support-page {
+      padding-top: var(--section-padding-mobile);
+      padding-bottom: var(--section-padding-mobile);
+    }
+
+    .contact-card {
+      padding: 24px;
+    }
+
+    .app-store-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

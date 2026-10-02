@@ -1,0 +1,51 @@
+---
+interface Props {
+  href?: string;
+  class?: string;
+}
+
+const { href = '[GOOGLE PLAY URL]', class: className = '' } = Astro.props;
+---
+
+<a 
+  href={href} 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  class={`google-play-badge ${className}`}
+  aria-label="Get Stitch on Google Play"
+>
+  <svg 
+    width="156" 
+    height="48" 
+    viewBox="0 0 156 48" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <rect width="156" height="48" rx="8" fill="#151517" stroke="#2A2A2E" stroke-width="1"/>
+    <!-- Google Play Triangle Logo -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M19 14.288v19.424c0 .548.3.992.766 1.185l10.375-10.897L19.766 13.1c-.466.193-.766.638-.766 1.188z" fill="#F2F2F3" opacity="0.9"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M33.687 21.938l-3.546-2.063-3.238 3.4 3.238 3.4 3.546-2.062c.792-.462.792-2.213 0-2.675z" fill="#F2F2F3"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.766 13.103L30.14 23.998l-3.238-3.4-7.136-7.495z" fill="#F2F2F3" opacity="0.8"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.766 34.897L26.902 27.4l3.238-3.402-10.374 10.899z" fill="#F2F2F3" opacity="0.7"/>
+    
+    <!-- Text: GET IT ON -->
+    <text x="44" y="19" font-family="Inter, -apple-system, sans-serif" font-size="9" font-weight="400" fill="#A1A1A8" letter-spacing="0.2">GET IT ON</text>
+    <!-- Text: Google Play -->
+    <text x="44" y="32" font-family="Inter, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#F2F2F3" letter-spacing="-0.3">Google Play</text>
+  </svg>
+</a>
+
+<style>
+  .google-play-badge {
+    display: inline-block;
+    border-radius: 8px;
+    transition: border-color 150ms ease, opacity 150ms ease;
+  }
+  .google-play-badge:hover {
+    opacity: 0.9;
+  }
+  .google-play-badge:hover rect {
+    stroke: #3A3A40;
+  }
+</style>

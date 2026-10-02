@@ -1,0 +1,96 @@
+---
+import ScreenshotFrame from './ScreenshotFrame.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  screenshotDimensions: string;
+  screenshotLabel: string;
+  screenshotSrc?: string;
+  isReversed?: boolean;
+}
+
+const {
+  title,
+  description,
+  screenshotDimensions,
+  screenshotLabel,
+  screenshotSrc,
+  isReversed = false
+} = Astro.props;
+---
+
+<div class={`feature-row ${isReversed ? 'reversed' : ''}`}>
+  <div class="feature-text">
+    <h3 class="feature-title">{title}</h3>
+    <p class="feature-description">{description}</p>
+  </div>
+  
+  <div class="feature-media">
+    <ScreenshotFrame
+      dimensions={screenshotDimensions}
+      label={screenshotLabel}
+      src={screenshotSrc}
+      alt={title}
+      isPortrait={true}
+    />
+  </div>
+</div>
+
+<style>
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feature-row:last-child {
+    border-bottom: none;
+  }
+
+  .feature-row.reversed .feature-text {
+    order: 2;
+  }
+
+  .feature-row.reversed .feature-media {
+    order: 1;
+  }
+
+  .feature-text {
+    max-width: var(--max-text-width);
+  }
+
+  .feature-title {
+    font-size: var(--font-size-40);
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .feature-description {
+    font-size: var(--font-size-18);
+    color: var(--text-secondary);
+    line-height: var(--line-height-body);
+  }
+
+  @media (max-width: 900px) {
+    .feature-row {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding-top: var(--section-padding-mobile);
+      padding-bottom: var(--section-padding-mobile);
+    }
+
+    .feature-row.reversed .feature-text,
+    .feature-row.reversed .feature-media {
+      order: unset;
+    }
+
+    .feature-title {
+      font-size: 28px;
+    }
+  }
+</style>

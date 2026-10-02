@@ -1,0 +1,80 @@
+---
+import { siteConfig } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <span class="footer-wordmark">{siteConfig.name}</span>
+      <span class="copyright">© {siteConfig.copyrightYear} {siteConfig.developerName}</span>
+    </div>
+    
+    <div class="footer-links">
+      <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+      <a href="/support" class="footer-link">Support</a>
+      <a href={`mailto:${siteConfig.supportEmail}`} class="footer-link">{siteConfig.supportEmail}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-top: 48px;
+    padding-bottom: 48px;
+    margin-top: auto;
+    background-color: var(--background);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-wordmark {
+    font-size: var(--font-size-14);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .copyright {
+    font-size: var(--font-size-14);
+    color: var(--text-tertiary);
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-link {
+    font-size: var(--font-size-14);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+  }
+
+  .footer-link:hover {
+    color: var(--text-primary);
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .footer-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+</style>

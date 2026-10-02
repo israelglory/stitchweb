@@ -1,0 +1,184 @@
+---
+interface Props {
+  dimensions: string;
+  label: string;
+  src?: string;
+  alt?: string;
+  isPortrait?: boolean;
+}
+
+const {
+  dimensions,
+  label,
+  src,
+  alt = 'Stitch App Screenshot',
+  isPortrait = true
+} = Astro.props;
+---
+
+<div class={`screenshot-frame ${isPortrait ? 'portrait' : 'landscape'}`}>
+  {src ? (
+    <div class="image-wrapper">
+      <img 
+        src={src} 
+        alt={alt} 
+        class="screenshot-img"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  ) : (
+    <div class="placeholder-content">
+      <svg class="wireframe-svg" viewBox={isPortrait ? "0 0 390 844" : "0 0 1200 750"} fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="100%" height="100%" fill="#151517" />
+        
+        {isPortrait ? (
+          <>
+            <rect x="24" y="16" width="50" height="12" rx="4" fill="#2A2A2E" />
+            <circle cx="350" cy="22" r="5" fill="#2A2A2E" />
+
+            <rect x="16" y="54" width="358" height="420" rx="8" fill="#0B0B0C" stroke="#2A2A2E" stroke-width="1" />
+            <circle cx="195" cy="264" r="28" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            <path d="M191 254L203 264L191 274V254Z" fill="#F2F2F3"/>
+
+            <rect x="75" y="420" width="240" height="24" rx="4" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            <rect x="95" y="428" width="200" height="8" rx="2" fill="#4C8DFF" opacity="0.8" />
+
+            <rect x="16" y="490" width="358" height="280" rx="8" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            
+            <line x1="195" y1="490" x2="195" y2="770" stroke="#4C8DFF" stroke-width="2" />
+            
+            <rect x="32" y="510" width="326" height="36" rx="4" fill="#2A2A2E" />
+            <rect x="32" y="556" width="180" height="36" rx="4" fill="#2A2A2E" />
+            <rect x="222" y="556" width="136" height="36" rx="4" fill="#2A2A2E" />
+            <rect x="32" y="602" width="326" height="36" rx="4" fill="#2A2A2E" opacity="0.6" />
+            
+            <rect x="32" y="658" width="50" height="32" rx="4" fill="#2A2A2E" />
+            <rect x="94" y="658" width="50" height="32" rx="4" fill="#2A2A2E" />
+            <rect x="156" y="658" width="50" height="32" rx="4" fill="#2A2A2E" />
+            <rect x="218" y="658" width="50" height="32" rx="4" fill="#2A2A2E" />
+            <rect x="280" y="658" width="78" height="32" rx="4" fill="#4C8DFF" opacity="0.2" />
+          </>
+        ) : (
+          <>
+            <rect x="0" y="0" width="1200" height="48" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            <rect x="24" y="16" width="80" height="16" rx="3" fill="#2A2A2E" />
+            <rect x="1080" y="10" width="96" height="28" rx="6" fill="#4C8DFF" />
+
+            <rect x="0" y="48" width="240" height="702" fill="#151517" stroke="#2A2A2E" stroke-width="1" />
+            <rect x="20" y="70" width="200" height="40" rx="6" fill="#1E1E21" />
+            <rect x="20" y="124" width="200" height="40" rx="6" fill="#1E1E21" />
+            <rect x="20" y="178" width="200" height="40" rx="6" fill="#1E1E21" />
+
+            <rect x="240" y="48" width="960" height="440" fill="#0B0B0C" />
+            <rect x="420" y="80" width="600" height="376" rx="8" fill="#151517" stroke="#2A2A2E" stroke-width="1" />
+            <circle cx="720" cy="268" r="32" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            <path d="M716 256L730 268L716 280V256Z" fill="#F2F2F3"/>
+
+            <rect x="240" y="488" width="960" height="262" fill="#151517" stroke="#2A2A2E" stroke-width="1" />
+            <line x1="680" y1="488" x2="680" y2="750" stroke="#4C8DFF" stroke-width="2" />
+            
+            <rect x="260" y="510" width="920" height="44" rx="6" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            <rect x="260" y="566" width="500" height="44" rx="6" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            <rect x="770" y="566" width="410" height="44" rx="6" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" />
+            <rect x="260" y="622" width="920" height="44" rx="6" fill="#1E1E21" stroke="#2A2A2E" stroke-width="1" opacity="0.7" />
+          </>
+        )}
+      </svg>
+
+      <div class="dimension-overlay">
+        <span class="dim-badge">Screenshot Placeholder</span>
+        <span class="dim-size">{dimensions}</span>
+        <span class="dim-label">{label}</span>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .screenshot-frame {
+    position: relative;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-frame);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .screenshot-frame.portrait {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .screenshot-frame.landscape {
+    max-width: 100%;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--surface);
+  }
+
+  .screenshot-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-frame);
+    object-fit: cover;
+  }
+
+  .placeholder-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wireframe-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .dimension-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0B0B0CEE;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .dim-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .dim-size {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .dim-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+</style>

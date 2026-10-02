@@ -1,0 +1,307 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AppStoreBadge from '../components/AppStoreBadge.astro';
+import GooglePlayBadge from '../components/GooglePlayBadge.astro';
+import ScreenshotFrame from '../components/ScreenshotFrame.astro';
+import FeatureRow from '../components/FeatureRow.astro';
+import FaqItem from '../components/FaqItem.astro';
+import { siteConfig } from '../data/site';
+---
+
+<Layout 
+  title={`${siteConfig.name} - ${siteConfig.hero.headline}`}
+  description={siteConfig.hero.subhead}
+  canonicalPath="/"
+>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-headline">{siteConfig.hero.headline}</h1>
+        <p class="hero-subhead">{siteConfig.hero.subhead}</p>
+        
+        <div class="hero-cta">
+          <div class="badge-group">
+            <AppStoreBadge href={siteConfig.appStoreUrl} />
+            <GooglePlayBadge href={siteConfig.googlePlayUrl} />
+          </div>
+          <p class="hero-pricing">{siteConfig.hero.pricing}</p>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <ScreenshotFrame
+          dimensions={siteConfig.hero.screenshotDimensions}
+          label={siteConfig.hero.screenshotLabel}
+          src={siteConfig.hero.screenshotSrc}
+          alt="Stitch Video Editor Interface"
+          isPortrait={true}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="container">
+      {siteConfig.features.map((feature, index) => (
+        <FeatureRow
+          title={feature.title}
+          description={feature.description}
+          screenshotDimensions={feature.screenshotDimensions}
+          screenshotLabel={feature.screenshotLabel}
+          screenshotSrc={feature.screenshotSrc}
+          isReversed={index % 2 === 1}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Privacy Section -->
+  <section class="privacy-section" id="privacy">
+    <div class="container">
+      <div class="privacy-header">
+        <h2 class="privacy-heading">{siteConfig.privacySection.heading}</h2>
+        <p class="privacy-intro">{siteConfig.privacySection.intro}</p>
+      </div>
+
+      <div class="privacy-grid">
+        {siteConfig.privacySection.points.map((point) => (
+          <div class="privacy-card">
+            <h3 class="privacy-point-title">{point.title}</h3>
+            <p class="privacy-point-detail">{point.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="privacy-footer-link">
+        <a href="/privacy-policy" class="privacy-link">
+          Read the privacy policy &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="faq-header">
+        <h2 class="faq-heading">Frequently asked questions</h2>
+      </div>
+
+      <div class="faq-list">
+        {siteConfig.faq.map((item) => (
+          <FaqItem question={item.question} answer={item.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Call to Action -->
+  <section class="final-cta-section">
+    <div class="container final-cta-inner">
+      <h2 class="final-cta-headline">{siteConfig.finalCta.headline}</h2>
+      <div class="final-cta-action">
+        <div class="badge-group">
+          <AppStoreBadge href={siteConfig.appStoreUrl} />
+          <GooglePlayBadge href={siteConfig.googlePlayUrl} />
+        </div>
+        <p class="final-cta-pricing">{siteConfig.hero.pricing}</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-content {
+    max-width: var(--max-text-width);
+  }
+
+  .hero-headline {
+    margin-bottom: 20px;
+  }
+
+  .hero-subhead {
+    font-size: var(--font-size-18);
+    color: var(--text-secondary);
+    line-height: var(--line-height-body);
+    margin-bottom: 32px;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .badge-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .hero-pricing {
+    font-size: var(--font-size-14);
+    color: var(--text-tertiary);
+  }
+
+  .hero-media {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Features Section */
+  .features-section {
+    background-color: var(--background);
+  }
+
+  /* Privacy Section */
+  .privacy-section {
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+    border-bottom: 1px solid var(--border);
+    background-color: var(--background);
+  }
+
+  .privacy-header {
+    max-width: var(--max-text-width);
+    margin-bottom: 48px;
+  }
+
+  .privacy-heading {
+    margin-bottom: 16px;
+  }
+
+  .privacy-intro {
+    font-size: var(--font-size-18);
+    color: var(--text-secondary);
+  }
+
+  .privacy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .privacy-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-button);
+    padding: 24px;
+  }
+
+  .privacy-point-title {
+    font-size: var(--font-size-18);
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .privacy-point-detail {
+    font-size: var(--font-size-16);
+    color: var(--text-secondary);
+  }
+
+  .privacy-footer-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .privacy-link {
+    font-size: var(--font-size-16);
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-header {
+    max-width: var(--max-text-width);
+    margin-bottom: 40px;
+  }
+
+  .faq-heading {
+    font-size: var(--font-size-40);
+  }
+
+  .faq-list {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Final CTA Section */
+  .final-cta-section {
+    padding-top: var(--section-padding-desktop);
+    padding-bottom: var(--section-padding-desktop);
+    background-color: var(--background);
+    text-align: center;
+  }
+
+  .final-cta-inner {
+    max-width: var(--max-text-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .final-cta-headline {
+    font-size: var(--font-size-40);
+  }
+
+  .final-cta-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .final-cta-pricing {
+    font-size: var(--font-size-14);
+    color: var(--text-tertiary);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero-section,
+    .privacy-section,
+    .faq-section,
+    .final-cta-section {
+      padding-top: var(--section-padding-mobile);
+      padding-bottom: var(--section-padding-mobile);
+    }
+
+    .privacy-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+</style>

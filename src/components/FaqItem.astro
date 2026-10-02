@@ -1,0 +1,76 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+}
+
+const { question, answer } = Astro.props;
+---
+
+<details class="faq-item">
+  <summary class="faq-question">
+    <span>{question}</span>
+    <span class="faq-icon" aria-hidden="true">+</span>
+  </summary>
+  <div class="faq-answer">
+    <p>{answer}</p>
+  </div>
+</details>
+
+<style>
+  .faq-item {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-button);
+    overflow: hidden;
+    transition: border-color var(--transition-speed) ease;
+  }
+
+  .faq-item:hover {
+    border-color: #3A3A40;
+  }
+
+  .faq-item[open] {
+    border-color: var(--border);
+  }
+
+  .faq-question {
+    padding: 20px 24px;
+    font-size: var(--font-size-18);
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    transition: transform var(--transition-speed) ease, color var(--transition-speed) ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+    color: var(--text-primary);
+  }
+
+  .faq-answer {
+    padding: 0 24px 20px 24px;
+    border-top: 1px solid transparent;
+  }
+
+  .faq-answer p {
+    font-size: var(--font-size-16);
+    color: var(--text-secondary);
+    line-height: var(--line-height-body);
+  }
+</style>

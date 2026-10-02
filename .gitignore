@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# astro
+.astro/
+
+# temporary scratch files
+scratch/
+
+# OS metadata
+.DS_Store
+*.log

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stitch.gloryolaifa.xyz/sitemap-index.xml

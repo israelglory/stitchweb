@@ -1,0 +1,82 @@
+---
+import { siteConfig } from '../data/site';
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark" aria-label="Stitch Home">
+      {siteConfig.name}
+    </a>
+    
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/privacy-policy" class="nav-link">Privacy</a>
+      <a href="/support" class="nav-link">Support</a>
+      <a href={siteConfig.appStoreUrl} target="_blank" rel="noopener noreferrer" class="btn-primary nav-btn">
+        Download
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+    height: 64px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wordmark {
+    font-size: var(--font-size-18);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .wordmark:hover {
+    opacity: 1;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-link {
+    font-size: var(--font-size-14);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+    opacity: 1;
+  }
+
+  .nav-btn {
+    padding: 6px 14px;
+    font-size: var(--font-size-14);
+  }
+
+  @media (max-width: 640px) {
+    .nav-link {
+      display: none;
+    }
+    .nav {
+      gap: 0;
+    }
+  }
+</style>
