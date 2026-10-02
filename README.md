@@ -7,6 +7,7 @@ Built strictly to match the privacy principles of the app itself:
 - **Self-Hosted Inter Fonts** (no external Google Fonts requests).
 - **Zero Third-Party Tracking / Cookies / Analytics**.
 - **Static HTML Output** compiled via Astro.
+- **Google AdMob `app-ads.txt` Verification** included at `/app-ads.txt`.
 
 ---
 
@@ -33,6 +34,17 @@ npm run build
 # Preview static build locally
 npm run preview
 ```
+
+---
+
+## 📲 Google AdMob Verification (`app-ads.txt`)
+
+The file [`public/app-ads.txt`](file:///Users/user/Documents/vibecode/stitchweb/public/app-ads.txt) is configured with your AdMob publisher verification line:
+```text
+google.com, pub-3925626843029360, DIRECT, f08c47fec0942fa0
+```
+When deployed, it will be accessible at:
+👉 **`https://stitch.gloryolaifa.xyz/app-ads.txt`**
 
 ---
 
@@ -81,28 +93,7 @@ npm run preview
 
 ### Updating App Store Links & Meta IDs
 Open `src/data/site.ts` to update the placeholders before submitting your App Store build:
-- `appStoreUrl`: Set to your live App Store URL (e.g. `https://apps.apple.com/app/stitch-private-video-editor/id123456789`).
+- `appStoreUrl`: Set to your live App Store URL.
+- `googlePlayUrl`: Set to your live Google Play Store URL.
 - `appId`: Set to your numerical App Store ID for the Apple Smart App Banner meta tag.
 - `supportEmail`: Set to your official developer support email (`gloryolaifa@gmail.com`).
-
-### Replacing Wireframe Placeholders with Real Screenshots
-To swap out the SVG wireframe placeholders for real app screenshots:
-1. Save your app screenshots into `public/screenshots/`:
-   - `hero-canvas.png` (Desktop landscape screenshot, e.g. `1200 × 800 px`)
-   - `timeline-portrait.png` (iPhone portrait screenshot, `1170 × 2532 px`)
-   - `transitions-portrait.png` (`1170 × 2532 px`)
-   - `captions-portrait.png` (`1170 × 2532 px`)
-   - `audio-portrait.png` (`1170 × 2532 px`)
-   - `export-portrait.png` (`1170 × 2532 px`)
-2. Pass the `src` attribute to `ScreenshotFrame` components in `src/pages/index.astro`.
-
----
-
-## 🔍 Quality & Design Audit Checklist
-
-- [x] **Zero Gradients**: Verified all colors use flat surface tokens (`#0B0B0C`, `#151517`, `#1E1E21`, `#2A2A2E`, `#4C8DFF`).
-- [x] **Zero Em Dashes (`—`)**: Copy uses standard punctuation and hyphens.
-- [x] **Zero Fluff Words**: Avoided terms like "Unleash", "Revolutionize", "Magic", "Supercharge".
-- [x] **Zero Exclamation Marks**: Clean, authoritative, minimal tone throughout.
-- [x] **Self-Hosted Fonts**: Inter 400 and 600 loaded from local `/fonts/` binaries.
-- [x] **Zero Tracking**: No external scripts, no cookies, no third-party HTTP requests.
